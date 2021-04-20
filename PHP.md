@@ -143,7 +143,6 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
         <input type="submit">
     </form>
     ```
-    <br/>
     ```
     <?php
     if($_REQUEST['fname'] != null){
