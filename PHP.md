@@ -257,6 +257,21 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     $_SESSION["age"] = 21;
     ```
 
+    생성된 세션 변수는 $_SESSION["~"]으로 접근할 수 있다.<br/>
+    ```
+    <?php
+    session_start();
+    $session = "session_test";
+    $_SESSION['SESSION'] = $session;
+    ?>
+    ```
+    ```
+    <body>
+        <?php
+        echo "세션：{$session}";
+        ?>
+    </body>
+    ```
 
 
 
