@@ -261,21 +261,44 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     <?php
     session_start();
-    $session = "session_test";
+    session = "session_test";
     $_SESSION['SESSION'] = $session;
     ?>
     ```
     ```
     <body>
         <?php
-        echo "세션：{$session}";
+        echo "세션 정보：{$_SESSION['SESSION']}";
         ?>
     </body>
     ```
-
-
+    세션 변수의 사용이 모두 끝나면, 세션 변수의 등록을 해지할 수 있다.<br/>
+    unset() 함수를 사용하면, 특정 이름의 세션 변수만을 해지할 수 있다.<br/>
+    현재 등록된 모든 세션 변수를 해지하고자 할 때에는 session_unset() 함수를 사용하면 된다.<br/>
+    또한, 세션을 자체를 완전히 종료하려면 session_destroy() 함수를 사용하여 세션 아이디를 삭제하면 된다.<br/>
+    ```
+    unset($_SESSION["session"]); //해당 세션 등록 해지
+    session_unset(); //모든 세션 등록 해지
+    session_destroy(); //세션 자체를 종료
+    ```
 
     + 정적 변수<br/>
     정적 변수(static variable)란 함수 내부에서 static 키워드로 선언한 변수를 의미한다.<br/>
     함수 내부에서 선언된 정적 변수는 함수의 호출이 종료되더라도 메모리상에서 사라지지 않다.<br/>
     하지만 지역 변수처럼 해당 함수 내부에서만 접근할 수 있습니다.<br/>
+    ```
+    <?php
+    function staticfun() {
+        static $cnt = 0;
+        echo "static count의 값 : {$cnt}<br>";
+        $cnt++;
+    }
+    staticfun();
+    staticfun();
+    staticfun();
+    ?>
+    ```
+------------
+## 2021-04-22
+
+------------
