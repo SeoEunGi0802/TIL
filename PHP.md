@@ -108,11 +108,9 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     </form>
     ```
     <br/>
-    ```
-    <?
+    ```PHP
     $id = $_GET['GET_TEST'];
     echo $id;
-    ?>
     ```
     이런 식으로 가능하다.<br/>
     GET 방식 이므로 입력한 값이 '123' 이라면 URL에 "http://localhost/~~~?GET_TEST=123"으로 나타난다.<br/>
