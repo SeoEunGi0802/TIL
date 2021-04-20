@@ -75,6 +75,11 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
     PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.<br/>
     1.$GLOBALS<br/>
+        // 변수 앞에 global을 붙여 사용한다 -><br/>
+        $x = 1;<br/>
+        function globalfun(){<br/>
+            global $x;<br/>
+            }
     2.$_SERVE<br/>
     3.$_GE<br/>
     4.$_POS<br/>
