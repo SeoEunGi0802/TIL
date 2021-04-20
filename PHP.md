@@ -148,8 +148,8 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     <?php
     $id = $_REQUEST['REQUEST_TEST'];
     echo $id;
-    ?>
     //GET, POST 둘다 상관 없이 HTML form이 제출한 데이터를 받아올 수 있다.
+    ?>
     ```
     GET, POST 둘다 상관 없이 HTML form이 제출한 데이터를 받아올 수 있다.
 
