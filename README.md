@@ -1,6 +1,6 @@
 # TIL
 
 ## 도전
-  + [JAVA SCRIPT(JS)](/js.md)
-  + [MySQL](/mysql.md)
-  + [PHP](/php.md)
+  + [JAVA SCRIPT(JS)](/JS.md)
+  + [MySQL](/MYsql.md)
+  + [PHP](/PHP.md)
