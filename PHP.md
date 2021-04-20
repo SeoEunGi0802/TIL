@@ -202,7 +202,22 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ?>
     ```
     ```
-    
+    <body>
+        <?php
+        $cookie = $_COOKIE['COOKIE'];
+        echo "쿠키 정보：{$cookie}";
+        ?>
+        <form method="POST" action="./test.php">
+            <input type="text" name="COOKIE_TEST">
+            <input type="submit" value="전송">
+        </form>
+    </body>
+    ```
+    PHP에서 unset() 함수나 setcookie() 함수를 사용하면, 생성된 쿠키를 삭제할 수 있습니다.<br/>
+    ```
+    unset($_COOKIE["COOKIE"]);
+    or
+    setcookie($cookieName, $POST_COOKIE, time()-60, "/");
     ```
 
     #### $_SESSION<br/>
