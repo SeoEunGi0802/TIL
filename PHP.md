@@ -73,15 +73,15 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     + 슈퍼 글로벌<br/>
     PHP는 미리 정의된 전역 변수인 슈퍼 글로벌(superglobal)을 제공한다.<br/>
     이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
-    PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.
-    1.$GLOBALS
-    2.$_SERVE
-    3.$_GE
-    4.$_POS
-    5.$_FILE
-    6.$_COOKI
-    7.$_SESSIO
-    8.$_REQUES
+    PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.<br/>
+    1.$GLOBALS<br/>
+    2.$_SERVE<br/>
+    3.$_GE<br/>
+    4.$_POS<br/>
+    5.$_FILE<br/>
+    6.$_COOKI<br/>
+    7.$_SESSIO<br/>
+    8.$_REQUES<br/>
     9.$_ENV<br/><br/>
 
     + 정적 변수<br/>
