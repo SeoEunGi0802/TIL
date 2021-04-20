@@ -74,20 +74,40 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     PHP는 미리 정의된 전역 변수인 슈퍼 글로벌(superglobal)을 제공한다.<br/>
     이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
     PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.<br/>
-    1.$GLOBALS<br/>
-        // 변수 앞에 global을 붙여 사용한다 -><br/>
-        $x = 1;<br/>
-        function globalfun(){<br/>
-            global $x;<br/>
-            }
-    2.$_SERVE<br/>
-    3.$_GE<br/>
-    4.$_POS<br/>
-    5.$_FILE<br/>
-    6.$_COOKI<br/>
-    7.$_SESSIO<br/>
-    8.$_REQUES<br/>
-    9.$_ENV<br/><br/>
+    #### $GLOBALS<br/>
+    변수 앞에 global을 붙여 사용한다.<br/>
+    ```
+        $x = 1;
+        function globalfun() {
+            global $x;
+        }
+    ```
+    이렇게 하면 함수globalfun() 내부에서 $x의 값을 사용할 수 있지만 다른 함수에서는 불가능 하므로 다시 선언 해주어야 한다.<br/>
+
+    #### $_SERVE<br/>
+    사용시 서버에 대한 정보를 찾아올 수 있다.<br/>
+    그뿐만 아니라 $_SERVER 변수를 통해 사용자가 PC에서 접속했는지 서버에서 접속했는지 알 수 있다.<br/>
+    $_SERVER['PHP_SELF'] 현재 실행중인 파일 이름<br/>
+    $_SERVER[´SERVER_NAME´] 호스트 서버 이름 등등<br/>
+
+    #### $_GET<br>
+
+    #### $_POS<br/>
+    HTML form이 method="post"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
+
+    #### $_FILE<br/>
+
+
+    #### $_COOKIE<br/>
+
+
+    #### $_SESSION<br/>
+
+
+    #### $_REQUES<br/>
+    POST 또는 GET 방식으로 넘어온 변수
+
+
 
     + 정적 변수<br/>
     정적 변수(static variable)란 함수 내부에서 static 키워드로 선언한 변수를 의미한다.<br/>
