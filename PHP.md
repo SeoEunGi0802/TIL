@@ -71,18 +71,18 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     이렇게 함수 밖에서 선언된 변수를 전역 변수(global variable)라고 합니다.<br/><br/>
     
     + 슈퍼 글로벌<br/>
-    PHP는 미리 정의된 전역 변수인 슈퍼 글로벌(superglobal)을 제공합니다.<br/>
-    이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있습니다.<br/>
-    PHP에서 제공하는 슈퍼 글로벌은 다음과 같습니다.
-    1. $GLOBALS
-    2. $_SERVE
-    3. $_GE
-    4. $_POS
-    5. $_FILE
-    6. $_COOKI
-    7. $_SESSIO
-    8. $_REQUES
-    9. $_ENV<br/><br/>
+    PHP는 미리 정의된 전역 변수인 슈퍼 글로벌(superglobal)을 제공한다.<br/>
+    이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
+    PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.
+    1.$GLOBALS
+    2.$_SERVE
+    3.$_GE
+    4.$_POS
+    5.$_FILE
+    6.$_COOKI
+    7.$_SESSIO
+    8.$_REQUES
+    9.$_ENV<br/><br/>
 
     + 정적 변수<br/>
     정적 변수(static variable)란 함수 내부에서 static 키워드로 선언한 변수를 의미한다.<br/>
