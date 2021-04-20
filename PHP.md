@@ -15,25 +15,33 @@ PHP에서 변수를 선언할 때는 변수의 이름 앞에 달러($) 기호를
 예시)<br/>
 
 + 정수<br/>
-$a = 10;<br/>
-$b = 20;<br/>
-$c = $a + $b; //$c == 30;<br/>
+```
+$a = 10;
+$b = 20;
+$c = $a + $b; //$c == 30;
+```
 
 + 실수<br/>
-$a2 = 0.1;<br/>
-$b2 = 0.2;<br/>
-$c2 = $a2 + $b2; //$c2 == 0.3;<br/>
+```
+$a2 = 0.1;
+$b2 = 0.2;
+$c2 = $a2 + $b2; //$c2 == 0.3;
+```
 
 + 문자열<br/>
-$str = "PHP";<br/>
-$str2 = "HI";<br/>
-(잘못된 방법)$str3 = $str + $str2; //$str == 0; PHP에서는 문자열에 '+'기호를 넣어줄 경우 숫자로 인식되어 값이 0으로 나온다.<br/>
-$str3 = $str.$str2 //$str3 == "PHPHI";<br/>
+```
+$str = "PHP";
+$str2 = "HI";
+(잘못된 방법)$str3 = $str + $str2; //$str == 0; PHP에서는 문자열에 '+'기호를 넣어줄 경우 숫자로 인식되어 값이 0으로 나온다.
+$str3 = $str.$str2 //$str3 == "PHPHI";
+```
 
 + 배열<br/>
-$arr = [1, 2, 3, 4, 5];<br/>
-$arr2 = [1, '2', "3", '4', 5];<br/>
-$arr3 = $arr.$arr2 //당연히 오류 발생. C언어를 기반으로 하였으므로 반복문으로 출력이 가능하다.<br/>
+```
+$arr = [1, 2, 3, 4, 5];
+$arr2 = [1, '2', "3", '4', 5];
+$arr3 = $arr.$arr2 //당연히 오류 발생. C언어를 기반으로 하였으므로 반복문으로 출력이 가능하다.
+```
 
 + 알아둬서 나쁘지 않은 것<br/>
 실수의 값을 연결하여 보여주고 싶을때 아래와 같이<br/>
@@ -70,10 +78,11 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     함수 밖에서 선언된 변수를 함수 내부에서 접근하고자 할 때는 global 키워드를 함께 사용해야 한다.<br/>
     이렇게 함수 밖에서 선언된 변수를 전역 변수(global variable)라고 합니다.<br/><br/>
     
-    + 슈퍼 글로벌<br/>
+    + 슈퍼 글로벌, 슈퍼전역변수, 초전역변수<br/>
     PHP는 미리 정의된 전역 변수인 슈퍼 글로벌(superglobal)을 제공한다.<br/>
     이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
     PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.<br/>
+
     #### $GLOBALS<br/>
     변수 앞에 global을 붙여 사용한다.<br/>
     ```
@@ -84,28 +93,122 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     이렇게 하면 함수globalfun() 내부에서 $x의 값을 사용할 수 있지만 다른 함수에서는 불가능 하므로 다시 선언 해주어야 한다.<br/>
 
-    #### $_SERVE<br/>
+    #### $_SERVER<br/>
     사용시 서버에 대한 정보를 찾아올 수 있다.<br/>
     그뿐만 아니라 $_SERVER 변수를 통해 사용자가 PC에서 접속했는지 서버에서 접속했는지 알 수 있다.<br/>
     $_SERVER['PHP_SELF'] 현재 실행중인 파일 이름<br/>
     $_SERVER[´SERVER_NAME´] 호스트 서버 이름 등등<br/>
 
     #### $_GET<br>
+    HTML form이 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
+    ```
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
+        ID : <input type="text" name="GET_TEST">
+        <input type="submit">
+    </form>
+    ```
+    <br/>
+    ```
+    <?php
+    $id = $_GET['GET_TEST'];
+    echo $id;
+    ?>
+    ```
+    이런 식으로 가능하다.<br/>
+    GET 방식 이므로 입력한 값이 '123' 이라면 URL에 "http://localhost/~~~?GET_TEST=123"으로 나타난다.<br/>
+    여기서 'echo'는 "~" 안에 있는 글자(~)를 HTML 으로 변환하여 출력해준다. 비슷한 코드로 print가 있다.<br/>
 
-    #### $_POS<br/>
-    HTML form이 method="post"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
+    #### $_POST<br/>
+    HTML form이 method="POST"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
+    ```
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+        ID : <input type="text" name="POST_TEST">
+        <input type="submit">
+    </form>
+    ```
+    <br/>
+    ```
+    <?php
+    $id = $_POST['POST_TEST'];
+    echo $id;
+    ?>
+    ```
+    위 GET방식과 매우 비슷하지만 둘의 차이는 크게 URL에 나타나지 않는다.<br/>
 
-    #### $_FILE<br/>
+    #### $_REQUEST<br/>
+    HTML form이 method="POST" 또는 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.<br/>
+    ```
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST or GET">
+        ID : <input type="text" name="REQUEST_TEST">
+        <input type="submit">
+    </form>
+    ```
+    <br/>
+    ```
+    <?php
+    $id = $_REQUEST['REQUEST_TEST'];
+    echo $id;
+    ?>
+    ```
+    GET, POST 둘다 상관 없이 HTML form이 제출한 데이터를 받아올 수 있다.
 
+    #### $_FILES<br/>
+    HTML form안 input type="file"일때 업로드된 파일 데이터를 수집하는 데 사용한다.<br/>
+    ```
+    <form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        FILE : <input type="file" name="FILE_TEST">
+        <input type="submit">
+    </form>
+    ```
+    ```
+    <?php
+    if (count($_FILES)) {
+        echo '<pre>';
+        echo "업로드된 파일의 대한 정보\n";
+        print_r($_FILES);
+        print "</pre>";
+    }
+    ?>
+    ```
+    위 코드는 결과물이 예상이 잘 안될것이다. 만약 파일을 선택한 후 전송 버튼을 누르게 되면
+    ```
+    업로드된 파일의 대한 정보
+    Array
+    (
+    [FILE_TEST] => Array
+        (
+            [name] => 파일이름
+            [type] => 파일의 타입
+            [tmp_name] => 파일의 위치경로
+            [error] => 에러 검출 횟수
+            [size] => 파일의 크기(byte)
+        )
+    )
+    ```
 
     #### $_COOKIE<br/>
-
+    $_COOKIE는 쿠키에 대한 코드 입니다.<br/>
+    먼저 쿠키란?<br/>
+    쿠키(cookie)란 웹 사이트에 접속할 때 서버에 의해 사용자의 컴퓨터에 저장되는 정보를 의미한다..<br/>
+    쿠키는 사용자를 식별하는데 종종 사용된다.<br/>
+    쿠키는 서버가 사용자 컴퓨터에 내장하는 작은 파일이다.<br/>
+    같은 컴퓨터가 브라우져로 페이지를 요청할 때마다, 쿠키도 함께 보낸다.<br/>
+    //setcookie (이름, 값, 폐기 일자);<br/>
+    //더 자세한 속성 : setcookie ( $name [, $value [, $expire [, $path [, $domain [, $secure [, $httponly ]]]]]] )<br/>
+    ```
+    <?php
+    if ($_POST != null) {
+        $POST_COOKIE = $_POST['COOKIE_TEST'];
+        setcookie("COOKIE", $POST_COOKIE, time() + 60 * 1);
+        header("Location: ./test.php");
+        }
+    ?>
+    ```
+    ```
+    
+    ```
 
     #### $_SESSION<br/>
-
-
-    #### $_REQUES<br/>
-    POST 또는 GET 방식으로 넘어온 변수
 
 
 
