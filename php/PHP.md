@@ -390,6 +390,7 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
          - 빈 문자열과 문자열 "0"
          - 빈 배열
          - NULL
+
     ```
     <?php
     var_dump((bool) false);
@@ -411,20 +412,26 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     var_dump((bool) null);
     ?>
     ```
-    결과는 아래와 같다.
-    ```
-    bool(false)
-    bool(true) // false와 "false"는 다르다.
-    bool(false)
-    bool(true) // 음수값도 값이기 때문에 ture이다.
-    bool(false)
-    bool(false)
-    bool(false) // "0"은 문자열이지만 빈값으로 들어가 false 이다.
-    bool(false)
-    bool(false)
-    ```
 
 2. 정수(integer)
+    + 정수(integer)는 부호를 가지는 소수부가 없는 수를 의미한다.<br/>
+    + PHP에서 정수의 표현 범위는 운영체제에 따라 달라지며, 64비트 운영체제를 기준으로 -263 ~ (263 - 1) 사이의 값을 가진다.<br/>
+    + PHP에서는 부호가 없는 정수(unsigned integer)는 지원하지 않는다.<br/>
+    + 정수는 10진수, 8진수(0으로 시작), 16진수(0x로 시작)로도 표현할 수 있다.<br/>
+
+    ```
+    <?php
+    echo "INT 타입의 크기는 " . PHP_INT_SIZE . "바이트 입니다.<br>";
+    echo "INT 타입이 표현할 수 있는 가장 큰 수는 " . PHP_INT_MAX . " 입니다.<br>";
+    $int1 = 9223372036854775807; // PHP_INT_MAX의 값
+    $int2 = 9223372036854775808; // PHP_INT_MAX보다 1큰 값
+    echo $int1 . "<br>" . $int2;
+    ?>
+    ```
+    위의 예제에서 상수 PHP_INT_SIZE는 정수 타입의 크기를<br/>
+    PHP_INT_MAX의 값은 정수 타입이 표현할 수 있는 가장 큰 수를 나타낸다.<br/>
+    PHP에서는 변수에 정수의 최대 범위를 넘는 값이 대입되면, 그 변수는 자동으로 실수형(float)으로 인식된다.<br/>
+    
 3. 실수(float)
 4. 문자열(string)
 5. 배열(array)
