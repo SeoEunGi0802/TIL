@@ -344,3 +344,35 @@ PHP는 위와 같이 미리 정의된 상수 이외에도 어디에 사용하느
     __LINE__ : 파일의 현재 줄 번호를 반환한다.
 
     __FILE__ : 파일의 전체 경로와 이름을 반환한다. include 내부에서 사용할 경우 include된 파일명을 반한다.
+
+    __DIR__	: 파일의 디렉터리를 반환한다. 포함한 파일 안에서 사용할 경우 포함된 파일의 디렉터리를 반환한다. dirname(__FILE__)과 같은 결과를 반한다.
+
+    __FUNCTION__ : 함수의 이름을 반환한다.
+    
+    __CLASS__ : 클래스의 이름을 반환한다. 클래스 이름은 대소문자를 구분한다.
+
+    __TRAIT__ : 클래스의 이름을 반환한다. 클래스 이름은 대소문자를 구분한다.. 트레이트의 이름은 트레이트를 선언한 네임스페이스를 포함한다.
+
+    __METHOD__	클래스의 메소드 이름을 반환한다.
+
+    __NAMESPACE__	현재 네임스페이스의 이름을 반환한다.
+
+    ```
+    <?php
+    echo " __LINE__ : " . __LINE__;
+    echo "<br>";
+    echo " __FILE__ : " . __FILE__;
+    echo "<br>";
+    echo " __DIR__ : " . __DIR__;
+    echo "<br>";
+    echo "dirname(__FILE__) : " . dirname(__FILE__);
+    echo "<br>";
+    echo " __FUNCTION__ : " . __FUNCTION__;
+    echo "<br>";
+    echo " __CLASS__ : " . __CLASS__;
+    echo "<br>";
+    echo "__TRAIT__ : " . __TRAIT__;
+    echo "<br>";
+    echo " __METHOD__ : " . __METHOD__;
+    ?>
+    ```
