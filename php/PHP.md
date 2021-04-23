@@ -158,10 +158,10 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     <?php
     if (count($_FILES)) {
-        echo '<pre>';
+        echo "<pre>";
         echo "업로드된 파일의 대한 정보\n";
         print_r($_FILES);
-        print "</pre>";
+        echo "</pre>";
     }
     ?>
     ```
@@ -378,9 +378,7 @@ PHP는 위와 같이 미리 정의된 상수 이외에도 어디에 사용하느
     echo " __METHOD__ : " . __METHOD__;
     ?>
     
-    
-
-    
+ 
 ## 기본 타입
 타입(data type)이란 프로그램에서 다룰 수 있는 값의 종류를 의미한다.<br/>
 PHP에서는 여러 가지 형태의 타입을 미리 정의하여 제공하고 있으며, 이것을 기본 타입이라고 한다.<br/>
@@ -490,19 +488,153 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
 
 5. 배열(array)
     + PHP에서 배열(array)은 한 쌍의 키(key)와 값(value)으로 이루어진 맵(map)으로 구성되는 순서가 있는 집합을 의미한다.
-    + 맵의 키값으로는 정수와 문자열만이 가능하며, 하나의 배열에 두 가지 키값을 같이 사용할 수 있다.
+    + map의 키값으로는 정수와 문자열만이 가능하며, 하나의 배열에 두 가지 키값을 같이 사용할 수 있다.
     + 정수와 문자열 이외에 다른 타입의 값을 키값으로 사용하면, 내부적으로 다음과 같이 타입 변환이 이루어진다.
         - 불리언은 true는 1로, false는 0으로 자동 타입 변환된다.
         - 유효한 숫자로만 이루어진 문자열은 정수나 실수로 자동 타입 변환된다.
         - 실수는 소수 부분이 제거되고, 정수로 자동 타입 변환된다.
         - NULL은 빈 문자열("")로 자동 타입 변환된다.
         - 배열과 객체는 배열의 키값으로 사용할 수 없다.
+        ```
+        <?php
+        $arr = array(
+            1 => "첫 번째 값",   // PHP의 배열에서 키값의 1과 "1"은 같은 값을 나타냄.
+            "1" => "두 번째 값", // 같은 키값을 사용하여 두 번 선언했기 때문에 나중에 선언된 "두 번째 값"만 남게됨.
+            10 => "세 번째 값",
+            -10 => "네 번째 값"
+        );
+        var_dump($arr);
+        echo "<br>";
+        echo $arr[1];
+        echo "<br>";
+        echo $arr["1"];
+        echo "<br>";
+        echo $arr[10];
+        echo "<br>";
+        echo $arr[-10];
+        ?>
+        ```
+        첫 번째 배열 요소의 키값인 1과 두 번째 배열 요소의 키값인 "1"은 같은 값으로 저장된다.<br/>
+        PHP에서는 같은 키값으로 여러 번 맵(map)을 선언할 경우, 그 키에 해당하는 값을 계속 덮어써서 맨 마지막에 선언된 값만을 저장하게 된다.<br/><br/>
 
 6. 객체(object)
+    + 객체(object)는 클래스의 인스턴스(instance)를 저장하기 위한 타입이다.
+    + 객체는 프로퍼티(properties)과 메소드(methods)를 포함할 수 있다.
+    ```
+    <?php
+    class PHP
+    {
+        public function PHP2()
+        {
+            $this->lec_01 = "PHP";
+            $this->lec_02 = "WITH";
+            $this->lec_03 = "MySQL";
+        }
+    }
 
+    $str = new PHP;
+    $str->PHP2();
+    echo $str->lec_01;
+    echo "<br>";
+    echo $str->lec_02;
+    echo "<br>";
+    echo $str->lec_03;
+    ?>
+    ```
 
 7. 리소스(resource)
-
+    + 리소스(resource)는 PHP 외부에 존재하는 외부 자원을 의미한다.
+    + 리소스는 데이터베이스 함수 등에서 데이터베이스 연결 등을 반환할 때 사용된다.<br/><br/>
 
 8. NULL
+    + NULL은 오직 한 가지 값(NULL 상수)만을 가질 수 있는 특별한 타입이다.
+    + NULL 타입의 변수란 아직 어떠한 값도 대입되지 않은 변수를 의미한다.
+    ```
+    <?php
+    $a;
+    var_dump($a);
 
+
+    $a = 100;
+    var_dump($a);
+
+
+    unset($a);
+    var_dump($a);
+    ?>
+    ```
+    PHP에서 초기화하지 않은 변수는 NULL로 자동 초기화한다.<br/>
+    -> var_dump($a)에서 화면에 에러가 발생하여 Undefined variable $a 즉 지정되지 않았다는 에러가 출력된다.<br/>
+    삭제되거나 존재하지 않는 변수를 참조할 경우에도 NULL을 반환한다.<br/>
+    -> 위 코드에선 반환전 $a의 값을 삭제했으므로 마찬가지로 에러가 발생한다.<br/><br/>
+
+
+## 타입 변환
+ + 자동 타입 변환
+    PHP에서는 변수의 타입은 해당 변수에 대입하는 값에 따라 자동으로 결정되기 때문에 변수를 선언할 때 타입을 명시할 필요가 없다.<br/>
+    이러한 타입 변환을 자동 타입 변환이라 한다.<br/>
+    ```
+    <?php
+    $auto = "문자열"; // string
+    echo $auto."<br>";
+    $auto = 10;       // int
+    echo $auto."<br>";
+    $auto = 3.14;     // float
+    echo $auto."<br>";
+    ?>
+    ```
+    <br/>
+
+ + 강제 타입 변환
+    PHP에서는 변수에 값을 대입할 때마다 변수의 타입이 그것에 맞게 변하게 된다.<br/>
+    하지만 사용자가 직접 데이터의 타입을 변환해야 할 경우도 많다.<br/>
+    PHP에서는 이러한 강제 타입 변환을 타입 캐스트 연산자인 괄호(())를 사용하여 수행할 수 있다.<br/>
+    변환시키고자 하는 데이터나 변수의 앞에 괄호를 붙이고, 그 괄호 안에 변환할 타입을 적으면 된다.<br/>
+    ```
+    <?php
+    $cast1 = 10;
+    var_dump($cast1);           // int(10)  
+    echo "<br>";
+
+    $cast2 = (boolean) $cast1;
+    var_dump($cast2);           // bool(true)
+    echo "<br>";
+
+    $cast3 = 0;
+    var_dump($cast3);           // int(0)  
+    echo "<br>";
+
+    $cast4 = (boolean) $cast3;
+    var_dump($cast4);           // bool(false)
+    ?>
+    ```
+    <br/>
+
+ + 가변 변수
+    PHP에서는 변수의 타입뿐만 아니라 변수의 이름까지 동적으로 바꿀 수 있다.<br/>
+    이러한 변수를 가변 변수(variable variables)라고 하며, 해당 변수의 값을 또 다른 변수의 이름으로 취급한다.
+    ```
+    <?php
+    $PHP = "HTML";
+    $HTML = "CSS";
+    $CSS = "JavaScript";
+    $JavaScript = "Ajax";
+    $Ajax = "PHP";  
+
+    echo $PHP;       // HTML
+    echo "<br>";
+    echo $$PHP;      // $HTML -> CSS
+    echo "<br>";
+    echo $$$PHP;     // $$HTML -> $CSS -> JavaScript
+    echo "<br>";
+    echo $$$$PHP;    // $$$HTML -> $$CSS -> $JavaScript -> Ajax
+    echo "<br>";
+    echo $$$$$PHP;   // $$$$HTML -> $$$CSS -> $$JavaScript -> $Ajax -> PHP
+    echo "<br>";
+    echo $$$$$$PHP;  // $$$$$HTML -> $$$$CSS -> $$$JavaScript -> $$Ajax -> $PHP -> HTML
+    echo "<br>";
+    echo $$$$$$$PHP; // $$$$$$HTML -> $$$$$CSS -> $$$$JavaScript -> $$$Ajax -> $$PHP -> $HTML -> CSS ...
+    ?>
+    ```
+    각 변수가 가지는 값이 변수의 이름인 변수의 값으로 변경된다.<br/>
+    즉 $PHP = "HTML"이면 $$PHP는 $PHP의 값이 "HTML"이었으므로 HTML이라는 변수의 값인 "CSS"라는 값을 가지게 된다.<br/>
