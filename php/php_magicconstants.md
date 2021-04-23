@@ -1,3 +1,4 @@
+<pre>
 Array
 (
     [Core] => Array
@@ -1940,3 +1941,4 @@ Array
         )
 
 )
+</pre>
