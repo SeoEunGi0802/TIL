@@ -317,11 +317,22 @@ PHP에서는 define() 함수를 사용하여 상수를 선언할 수 있다.
     ```
     <?php
     function definefunc(){
+        echo def; // 에러발생
         define("def", "define() 테스트");
-        echo def;
+        echo def; // 정상출력
         }
         
         definefunc();
-        echo "<br>".def;
-        ?>
+        echo "<br>".def; // 정상출력(이해를 돕기위한 <br>태그 삽입)
+    ?>
+    ```
+
+## 마법 상수
+PHP는 어떤 스크립트에서도 사용할 수 있는 미리 정의된 다양한 상수를 제공한다.
+    ```
+    <?php
+    echo "<pre>";
+    print_r(get_defined_constants(true));
+    echo "</pre>";
+    ?>
     ```
