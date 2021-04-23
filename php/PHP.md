@@ -351,7 +351,7 @@ PHP는 위와 같이 미리 정의된 상수 이외에도 어디에 사용하느
     
     __CLASS__ : 클래스의 이름을 반환한다. 클래스 이름은 대소문자를 구분한다.
 
-    __TRAIT__ : 클래스의 이름을 반환한다. 클래스 이름은 대소문자를 구분한다.. 트레이트의 이름은 트레이트를 선언한 네임스페이스를 포함한다.
+    __TRAIT__ : 클래스의 이름을 반환한다. 클래스 이름은 대소문자를 구분한다. 트레이트의 이름은 트레이트를 선언한 네임스페이스를 포함한다.
 
     __METHOD__	클래스의 메소드 이름을 반환한다.
 
@@ -390,6 +390,40 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
          - 빈 문자열과 문자열 "0"
          - 빈 배열
          - NULL
+    ```
+    <?php
+    var_dump((bool) false);
+    echo "<br>";
+    var_dump((bool) "false");
+    echo "<br>";
+    var_dump((bool) 0);
+    echo "<br>";
+    var_dump((bool) -100);
+    echo "<br>";
+    var_dump((bool) 0.0);
+    echo "<br>";
+    var_dump((bool) "");
+    echo "<br>";
+    var_dump((bool) "0");
+    echo "<br>";
+    var_dump((bool) array());
+    echo "<br>";
+    var_dump((bool) null);
+    ?>
+    ```
+    결과는 아래와 같다.
+    ```
+    bool(false)
+    bool(true) // false와 "false"는 다르다.
+    bool(false)
+    bool(true) // 음수값도 값이기 때문에 ture이다.
+    bool(false)
+    bool(false)
+    bool(false) // "0"은 문자열이지만 빈값으로 들어가 false 이다.
+    bool(false)
+    bool(false)
+    ```
+
 2. 정수(integer)
 3. 실수(float)
 4. 문자열(string)
