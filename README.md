@@ -2,4 +2,4 @@
 
 ## 도전
   + [MySQL](/MYsql.md)
-  + [PHP](php/php.md)
+  + [PHP](php/PHP.md)
