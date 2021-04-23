@@ -60,7 +60,7 @@ PHP에서는 이러한 변수의 이름을 작성할 때 반드시 지켜야 하
 4. 변수의 이름으로 PHP에서 미리 정의한 $this는 사용할 수 없습니다.
 5. 변수의 이름은 대소문자를 구분합니다.<br/><br/>
 
-## 변수의 종류<br/>
+## 변수의 종류
 PHP에서 변수는 스크립트 내 어느 곳에서나 선언할 수 있다.<br/>
 변수의 유효 범위(variable scope)란 특정 변수를 참조되거나 사용할 수 있는 스크립트 내의 범위를 의미한다.<br/>
 PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다음과 같이 구분한다.<br/><br/>
@@ -84,7 +84,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     이러한 슈퍼 글로벌은 특별한 선언 없이 스크립트 내의 어디에서라도 바로 사용할 수 있다.<br/>
     PHP에서 제공하는 슈퍼 글로벌은 다음과 같다.<br/>
 
-    #### $GLOBALS<br/>
+    #### $GLOBALS
     변수 앞에 global을 붙여 사용한다.<br/>
     ```
         $x = 1;
@@ -94,13 +94,13 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     이렇게 하면 함수globalfun() 내부에서 $x의 값을 사용할 수 있지만 다른 함수에서는 불가능 하므로 다시 선언 해주어야 한다.<br/>
 
-    #### $_SERVER<br/>
+    #### $_SERVER
     사용시 서버에 대한 정보를 찾아올 수 있다.<br/>
     그뿐만 아니라 $_SERVER 변수를 통해 사용자가 PC에서 접속했는지 서버에서 접속했는지 알 수 있다.<br/>
     $_SERVER['PHP_SELF'] 현재 실행중인 파일 이름<br/>
     $_SERVER[´SERVER_NAME´] 호스트 서버 이름 등등<br/>
 
-    #### $_GET<br>
+    #### $_GET
     HTML form이 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
     ```
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
@@ -118,7 +118,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     GET 방식 이므로 입력한 값이 '123' 이라면 URL에 "http://localhost/~~~?GET_TEST=123"으로 나타난다.<br/>
     여기서 'echo'는 글자를 HTML 으로 변환하여 출력해준다. 비슷한 코드로 print가 있다.<br/>
 
-    #### $_POST<br/>
+    #### $_POST
     HTML form이 method="POST"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
     ```
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
@@ -134,7 +134,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     위 GET방식과 매우 비슷하지만 둘의 차이는 크게 URL에 나타나지 않는다.<br/>
 
-    #### $_REQUEST<br/>
+    #### $_REQUEST
     HTML form이 method="POST" 또는 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.<br/>
     ```
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST or GET">
@@ -150,7 +150,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     ```
     GET, POST 둘다 상관 없이 HTML form이 제출한 데이터를 받아올 수 있다.
 
-    #### $_FILES<br/>
+    #### $_FILES
     HTML form안 input type="file"일때 업로드된 파일 데이터를 수집하는 데 사용한다.<br/>
     ```
     <form enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -184,7 +184,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     )
     ```
 
-    #### $_COOKIE<br/>
+    #### $_COOKIE
     $_COOKIE는 쿠키에 대한 코드 입니다.<br/>
     먼저 쿠키란?<br/>
     쿠키(cookie)란 웹 사이트에 접속할 때 서버에 의해 사용자의 컴퓨터에 저장되는 정보를 의미한다.<br/>
@@ -337,6 +337,8 @@ PHP는 어떤 스크립트에서도 사용할 수 있는 미리 정의된 다양
     echo "</pre>";
     ?>
 
-위 코드를 실행 시키면 [이러한](/php/php_magicconstants.md) 화면이 나온다.
-PHP는 위와 같이 미리 정의된 상수 이외에도 어디에 사용하느냐에 따라 용도가 변경되는 8개의 마법 상수를 제공한다.
-이러한 마법 상수는 대소문자를 구분하지 않는다.
+위 코드를 실행 시키면 [이러한](/php/php_magicconstants.md) 화면이 나온다.<br/>
+PHP는 위와 같이 미리 정의된 상수 이외에도 어디에 사용하느냐에 따라 용도가 변경되는 8개의 마법 상수를 제공한다.<br/>
+이러한 마법 상수는 대소문자를 구분하지 않는다.<br/><br/>
+
+    + __LINE__	: 파일의 현재 줄 번호를 반환함.
