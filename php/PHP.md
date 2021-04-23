@@ -337,4 +337,4 @@ PHP는 어떤 스크립트에서도 사용할 수 있는 미리 정의된 다양
     echo "</pre>";
     ?>
 
-위 코드를 실행 시키면 이러한(/php/php_magicconstants.md) 화면이 나온다.
+위 코드를 실행 시키면 [이러한](/php/php_magicconstants.md) 화면이 나온다.
