@@ -329,10 +329,11 @@ PHP에서는 define() 함수를 사용하여 상수를 선언할 수 있다.
 
 ## 마법 상수
 PHP는 어떤 스크립트에서도 사용할 수 있는 미리 정의된 다양한 상수를 제공한다.
-    ```
+
     <?php
-    echo "<pre/>";
+    echo "<pre>";
     print_r(get_defined_constants(true));
-    echo "</pre/>";
+    echo "</pre>";
     ?>
-    ```
+
+// 위 코드는 '```' 로 감싸면 제대로 보여지지 않아서 평문으로 작성 //
