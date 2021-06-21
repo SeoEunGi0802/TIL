@@ -890,8 +890,7 @@ and, or, xor 연산자는 두 개의 피연산자를 가지는 이항 연산자�
 
 다음은 논리 연산자의 모든 동작의 결과를 보여주는 진리표(truth table)이다.<br>
 |A|B|A and B (A && B)|A or B (A // B)|A xor B|!A|
-|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-|true|true|true|true|false|false|
+|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
 |true|false|false|true|true|false|
 |false|true|false|true|true|true|
 |false|false|false|false|false|true|
