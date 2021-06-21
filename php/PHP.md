@@ -110,10 +110,8 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     </form>
     ```
     ```php
-    <?php
     $id = $_GET['GET_TEST'];
     echo $id;
-    ?>
     ```
     이런 식으로 가능하다.<br/>
     GET 방식 이므로 입력한 값이 '123' 이라면 URL에 "http://localhost/~~~?GET_TEST=123"으로 나타난다.<br/>
@@ -128,10 +126,8 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     </form>
     ```
     ```php
-    <?php
     $id = $_POST['POST_TEST'];
     echo $id;
-    ?>
     ```
     위 GET방식과 매우 비슷하지만 둘의 차이는 크게 URL에 나타나지 않는다.<br/><br/>
 
@@ -144,10 +140,8 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     </form>
     ```
     ```php
-    <?php
     $name = $_REQUEST['fname'];
     echo $name;
-    ?>
     ```
     GET, POST 둘다 상관 없이 HTML form이 제출한 데이터를 받아올 수 있다.<br/><br/>
 
@@ -160,14 +154,12 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     </form>
     ```
     ```php
-    <?php
     if (count($_FILES)) {
         echo "<pre>";
         echo "업로드된 파일의 대한 정보\n";
         print_r($_FILES);
         echo "</pre>";
     }
-    ?>
     ```
     위 코드는 결과물이 예상이 잘 안될것이다. 만약 파일을 선택한 후 전송 버튼을 누르게 되면
     ```php
@@ -199,13 +191,11 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     //setcookie (이름, 값, 폐기 일자);<br/>
     //더 자세한 속성 : setcookie ( $name [, $value [, $expire [, $path [, $domain [, $secure [, $httponly ]]]]]] )
     ```php
-    <?php
     if ($_POST != null) {
         $POST_COOKIE = $_POST['COOKIE_TEST'];
         setcookie("COOKIE", $POST_COOKIE, time() + 60 * 1);
         header("Location: ./test.php");
         }
-    ?>
     ```
     setcookie() 함수의 매개변수 중에서 쿠키 명을 제외한 매개변수는 모두 옵션이다.<br/>
     쿠키는 명시된 지속 시간이 지나면 무효가 되며, 지속 시간을 전달하지 않으면 브라우저가 닫히기 전까지 계속 유효하다.<br/>
@@ -214,16 +204,15 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     만약 HTTPS 프로토콜에서 사용하려면 secure 값을 true로 설정해야 한다.
     또한, HTTP 프로토콜에서만 사용하도록 하려면 httponly 값을 true로 설정하면 된다.
     ```php
-    <body>
-        <?php
+    <?php
         $cookie = $_COOKIE['COOKIE'];
         echo "쿠키 정보：{$cookie}";
-        ?>
-        <form method="POST" action="./test.php">
-            <input type="text" name="COOKIE_TEST">
-            <input type="submit" value="전송">
-        </form>
-    </body>
+    ?>
+    
+    <form method="POST" action="./test.php">
+        <input type="text" name="COOKIE_TEST">
+        <input type="submit" value="전송">
+    </form>
     ```
     PHP에서 unset() 함수나 setcookie() 함수를 사용하면, 생성된 쿠키를 삭제할 수 있다.<br/>
     ```php
@@ -262,18 +251,12 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
 
     생성된 세션 변수는 $_SESSION["~"]으로 접근할 수 있다.
     ```php
-    <?php
     session_start();
     session = "session_test";
     $_SESSION['SESSION'] = $session;
-    ?>
     ```
     ```php
-    <body>
-        <?php
-        echo "세션 정보：{$_SESSION['SESSION']}";
-        ?>
-    </body>
+    echo "세션 정보：{$_SESSION['SESSION']}";
     ```
     세션 변수의 사용이 모두 끝나면, 세션 변수의 등록을 해지할 수 있다.<br/>
     unset() 함수를 사용하면, 특정 이름의 세션 변수만을 해지할 수 있다.<br/>
@@ -292,7 +275,6 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     함수 내부에서 선언된 정적 변수는 함수의 호출이 종료되더라도 메모리상에서 사라지지 않다.<br/>
     하지만 지역 변수처럼 해당 함수 내부에서만 접근할 수 있다.<br/>
     ```php
-    <?php
     function staticfun() {
         static $cnt = 0;
         echo "static count의 값 : {$cnt}<br>";
@@ -301,7 +283,6 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
     staticfun();
     staticfun();
     staticfun();
-    ?>
     ```
 ------------
 </div>
@@ -335,7 +316,6 @@ PHP에서는 define() 함수를 사용하여 상수를 선언할 수 있다.<br/
     //대소문자구분여부의 디폴트(false, 빈칸 가능)는 구분하고, true가 들어가면 구분을 하지 않는다.
     ```
     ```php
-    <?php
     function definefunc(){
         echo def; // 에러발생
         define("def", "define() 테스트");
@@ -344,7 +324,6 @@ PHP에서는 define() 함수를 사용하여 상수를 선언할 수 있다.<br/
         
         definefunc();
         echo "<br>".def; // 정상출력(이해를 돕기위한 <br>태그 삽입)
-    ?>
     ```
     <br/>
 
@@ -414,8 +393,7 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
          - 빈 배열
          - NULL
 
-    ```
-    <?php
+    ```php
     var_dump((bool) false);
     echo "<br>";
     var_dump((bool) "false");
@@ -433,7 +411,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     var_dump((bool) array());
     echo "<br>";
     var_dump((bool) null);
-    ?>
     ```
     <br/>
 
@@ -444,13 +421,11 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     + 정수는 10진수, 8진수(0으로 시작), 16진수(0x로 시작)로도 표현할 수 있다.
 
     ```php
-    <?php
     echo "INT 타입의 크기는 " . PHP_INT_SIZE . "바이트 입니다.<br>";
     echo "INT 타입이 표현할 수 있는 가장 큰 수는 " . PHP_INT_MAX . " 입니다.<br>";
     $int1 = 9223372036854775807; // PHP_INT_MAX의 값
     $int2 = 9223372036854775808; // PHP_INT_MAX보다 1큰 값
     echo $int1 . "<br>" . $int2;
-    ?>
     ```
     위의 예제에서 상수 PHP_INT_SIZE는 정수 타입의 크기를<br/>
     PHP_INT_MAX의 값은 정수 타입이 표현할 수 있는 가장 큰 수를 나타낸다.<br/>
@@ -462,7 +437,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     + 컴퓨터에서 실수를 표현하는 방식은 반드시 오차가 존재하는 한계를 지니므로, 실수형끼리 직접 값을 비교하는 것은 피하는 것이 좋다.
 
     ```php
-    <?php
     echo "FLOAT 타입이 표현할 수 있는 가장 큰 수는 " . PHP_FLOAT_MAX . " 입니다.<br>";
     $int1 = 1.7976931348623E+308; // PHP_INT_MAX의 값
     $int2 = 1.7976931348623E+308; // PHP_INT_MAX보다 1큰 값
@@ -470,12 +444,10 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
 
     echo $int1 . "<br>" . $int2;
     echo "<br>".pow(10, 295);
-    ?>
     ```
     PHP에서는 e 지수 표현과 E 지수 표현이 모두 가능하다.<br/>
     변수에 실수의 최대 범위를 넘는 값이 대입되면, 그 변수는 자동으로 미리 정의된 상수인 INF로 인식된다.<br/>
     ```php
-    <?php
     $int1 = 13910230.324923490324923490324923490324923490324923490; // PHP_INT_MAX의 값
     $int2 = 13910230.324923490324923490324923490324923490324923490111233123;
 
@@ -484,7 +456,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     } else {
         echo "틀려요";
     }
-    ?>
     ```
     $int1과 $int2는 다르지만 코드를 실행시키면 "같아요"가 출력된다.<br/><br/>
 
@@ -495,14 +466,12 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     + UTF-8 인코딩 환경에서는 영문자는 한 글자당 1바이트, 한글은 한 문자당 3바이트로 표현된다.
 
     ```php
-    <?php
     $str1 = "PHP";
     $str2 = "가";
 
     echo strlen($str1); // 3
     echo "<br>";
     echo strlen($str2); // 18
-    ?>
     ```
     한글이 한 문자당 3바이트로 처리되는 것을 확인할 수 있다.<br/><br/>
 
@@ -516,7 +485,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
         - NULL은 빈 문자열("")로 자동 타입 변환된다.
         - 배열과 객체는 배열의 키값으로 사용할 수 없다.
         ```php
-        <?php
         $arr = array(
             1 => "첫 번째 값",   // PHP의 배열에서 키값의 1과 "1"은 같은 값을 나타냄.
             "1" => "두 번째 값", // 같은 키값을 사용하여 두 번 선언했기 때문에 나중에 선언된 "두 번째 값"만 남게됨.
@@ -532,7 +500,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
         echo $arr[10];
         echo "<br>";
         echo $arr[-10];
-        ?>
         ```
         첫 번째 배열 요소의 키값인 1과 두 번째 배열 요소의 키값인 "1"은 같은 값으로 저장된다.<br/>
         PHP에서는 같은 키값으로 여러 번 맵(map)을 선언할 경우, 그 키에 해당하는 값을 계속 덮어써서 맨 마지막에 선언된 값만을 저장하게 된다.<br/><br/>
@@ -541,7 +508,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     + 객체(object)는 클래스의 인스턴스(instance)를 저장하기 위한 타입이다.
     + 객체는 프로퍼티(properties)과 메소드(methods)를 포함할 수 있다.
     ```php
-    <?php
     class PHP
     {
         public function PHP2()
@@ -559,7 +525,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     echo $str->lec_02;
     echo "<br>";
     echo $str->lec_03;
-    ?>
     ```
 
 7. 리소스(resource)
@@ -570,7 +535,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     + NULL은 오직 한 가지 값(NULL 상수)만을 가질 수 있는 특별한 타입이다.
     + NULL 타입의 변수란 아직 어떠한 값도 대입되지 않은 변수를 의미한다.
     ```php
-    <?php
     $a;
     var_dump($a);
 
@@ -581,7 +545,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
 
     unset($a);
     var_dump($a);
-    ?>
     ```
     PHP에서 초기화하지 않은 변수는 NULL로 자동 초기화한다.<br/>
     -> var_dump($a)에서 화면에 에러가 발생하여 Undefined variable $a 즉 지정되지 않았다는 에러가 출력된다.<br/>
@@ -594,14 +557,12 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     PHP에서는 변수의 타입은 해당 변수에 대입하는 값에 따라 자동으로 결정되기 때문에 변수를 선언할 때 타입을 명시할 필요가 없다.<br/>
     이러한 타입 변환을 자동 타입 변환이라 한다.<br/>
     ```php
-    <?php
     $auto = "문자열"; // string
     echo $auto."<br>";
     $auto = 10;       // int
     echo $auto."<br>";
     $auto = 3.14;     // float
     echo $auto."<br>";
-    ?>
     ```
     <br/>
 
@@ -611,7 +572,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     PHP에서는 이러한 강제 타입 변환을 타입 캐스트 연산자인 괄호(())를 사용하여 수행할 수 있다.<br/>
     변환시키고자 하는 데이터나 변수의 앞에 괄호를 붙이고, 그 괄호 안에 변환할 타입을 적으면 된다.<br/>
     ```php
-    <?php
     $cast1 = 10;
     var_dump($cast1);           // int(10)  
     echo "<br>";
@@ -626,7 +586,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
 
     $cast4 = (boolean) $cast3;
     var_dump($cast4);           // bool(false)
-    ?>
     ```
     <br/>
 
@@ -634,7 +593,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     PHP에서는 변수의 타입뿐만 아니라 변수의 이름까지 동적으로 바꿀 수 있다.<br/>
     이러한 변수를 가변 변수(variable variables)라고 하며, 해당 변수의 값을 또 다른 변수의 이름으로 취급한다.
     ```php
-    <?php
     $PHP = "HTML";
     $HTML = "CSS";
     $CSS = "JavaScript";
@@ -654,7 +612,6 @@ PHP가 제공하는 기본 타입은 다음과 같다.<br/>
     echo $$$$$$PHP;  // $$$$$HTML -> $$$$CSS -> $$$JavaScript -> $$Ajax -> $PHP -> HTML
     echo "<br>";
     echo $$$$$$$PHP; // $$$$$$HTML -> $$$$$CSS -> $$$$JavaScript -> $$$Ajax -> $$PHP -> $HTML -> CSS ...
-    ?>
     ```
     각 변수가 가지는 값이 변수의 이름인 변수의 값으로 변경된다.<br/>
     즉 $PHP = "HTML"이면 $$PHP는 $PHP의 값이 "HTML"이었으므로 HTML이라는 변수의 값인 "CSS"라는 값을 가지게 된다.<br/><br/>
