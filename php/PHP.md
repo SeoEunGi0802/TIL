@@ -925,20 +925,20 @@ var_dump( (3 < 5) or ("12" > 20) ); // true or false -> true
 
 다음 그림은 비트 AND 연산자(&)의 동작을 나타낸다.<br>
 이처럼 비트 AND 연산자는 대응되는 두 비트가 모두 1일 때만 1을 반환하며, 다른 경우는 모두 0을 반환한다.<br>
-![img1](http://www.tcpschool.com/lectures/img_php_bitwise_and.png)
+![img1](http://www.tcpschool.com/lectures/img_php_bitwise_and.png)<br>
 
 다음 그림은 비트 OR 연산자(|)의 동작을 나타낸다.<br>
 이처럼 비트 OR 연산자는 대응되는 두 비트 중 하나라도 1이면 1을 반환하며, 두 비트가 모두 0일 때만 0을 반환한다.<br>
-![img2](http://www.tcpschool.com/lectures/img_php_bitwise_or.png)
+![img2](http://www.tcpschool.com/lectures/img_php_bitwise_or.png)<br>
 
 
 다음 그림은 비트 XOR 연산자(^)의 동작을 나타낸다.<br>
 이처럼 비트 XOR 연산자는 대응되는 두 비트가 서로 다르면 1을 반환하고, 서로 같으면 0을 반환한다.<br>
-![img3](http://www.tcpschool.com/lectures/img_php_bitwise_xor.png)
+![img3](http://www.tcpschool.com/lectures/img_php_bitwise_xor.png)<br>
 
 다음 그림은 비트 NOT 연산자(~)의 동작을 나타낸다.<br>
 이처럼 비트 NOT 연산자는 해당 비트가 1이면 0을 반환하고, 0이면 1을 반환한다.<br>
-![img4](http://www.tcpschool.com/lectures/img_php_bitwise_not.png)
+![img4](http://www.tcpschool.com/lectures/img_php_bitwise_not.png)<br>
 
 ```php
 $num_01 = 15;
@@ -951,11 +951,11 @@ echo ">> 연산자에 의한 결괏값은 ".($num_02>>1)."입니다.";     // �
 
 
 위 예제는 왼쪽 시프트 연산자(<<)를 사용하여, 해당 데이터의 모든 비트를 왼쪽으로 1비트씩 이동시키고 있다.<br>
-![img5](http://www.tcpschool.com/lectures/img_php_left_shift.png)
+![img5](http://www.tcpschool.com/lectures/img_php_left_shift.png)<br>
 그 결과 해당 데이터의 값은 처음 값에 2를 곱한 것과 같아진다.<br>
 
 오른쪽 시프트 연산자(>>)를 사용하여, 해당 데이터의 모든 비트를 오른쪽으로 1비트씩 이동시키고 있다.<br>
-![img6](http://www.tcpschool.com/lectures/img_php_right_shift.png)
+![img6](http://www.tcpschool.com/lectures/img_php_right_shift.png)<br>
 그 결과 해당 데이터의 값은 처음 값에 2를 나눈 것과 같아진다.<br>
 
 
