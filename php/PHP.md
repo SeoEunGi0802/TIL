@@ -19,21 +19,21 @@ PHP로 작성된 코드를 HTML 코드 안에 추가하면, 웹 서버는 해당
 PHP에서 변수를 선언할 때는 변수의 이름 앞에 달러($) 기호를 사용하여 선언하고 따로 타입을 명시하지 않는다.<br/><br/>
 
 + 정수
-```
+```php
 $a = 10;
 $b = 20;
 $c = $a + $b; //$c == 30;
 ```
 
 + 실수
-```
+```php
 $a2 = 0.1;
 $b2 = 0.2;
 $c2 = $a2 + $b2; //$c2 == 0.3;
 ```
 
 + 문자열
-```
+```php
 $str = "PHP";
 $str2 = "HI";
 (잘못된 방법)$str3 = $str + $str2; //$str == 0; PHP에서는 문자열에 '+'기호를 넣어줄 경우 숫자로 인식되어 값이 0으로 나온다.
@@ -41,7 +41,7 @@ $str3 = $str.$str2 //$str3 == "PHPHI";
 ```
 
 + 배열
-```
+```php
 $arr = [1, 2, 3, 4, 5];
 $arr2 = [1, '2', "3", '4', 5];
 $arr3 = $arr.$arr2 //당연히 오류 발생. C언어를 기반으로 하였으므로 반복문으로 출력이 가능하다.
@@ -87,7 +87,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
 
     #### $GLOBALS
     변수 앞에 global을 붙여 사용한다.
-    ```
+    ```php
         $x = 1;
         function globalfun() {
             global $x;
@@ -103,13 +103,13 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
 
     #### $_GET
     HTML form이 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
-    ```
+    ```php
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="GET">
         ID : <input type="text" name="GET_TEST">
         <input type="submit">
     </form>
     ```
-    ```
+    ```php
     <?php
     $id = $_GET['GET_TEST'];
     echo $id;
@@ -121,13 +121,13 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
 
     #### $_POST
     HTML form이 method="POST"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.
-    ```
+    ```php
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
         ID : <input type="text" name="POST_TEST">
         <input type="submit">
     </form>
     ```
-    ```
+    ```php
     <?php
     $id = $_POST['POST_TEST'];
     echo $id;
@@ -137,7 +137,7 @@ PHP에서는 이러한 변수의 유효 범위에 따라 변수의 종류를 다
 
     #### $_REQUEST
     HTML form이 method="POST" 또는 method="GET"으로 제출되었을 때 form 데이터를 수집하는 데 사용하고 또한 변수를 전달할 때도 사용한다.<br/>
-    ```
+    ```php
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST or GET">
         ID : <input type="text" name="REQUEST_TEST">
         <input type="submit">
